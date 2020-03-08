@@ -35,7 +35,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
+        <java.version>11</java.version>
         <assertj.version>3.15.0</assertj.version>
         <junit5.version>5.6.0</junit5.version>
         <checkstyle.version>8.30</checkstyle.version>
@@ -314,28 +314,7 @@
         </pluginManagement>
 
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>checkstyle-validation</id>
-                        <phase>validate</phase>
-                        <configuration>
-                            <configLocation>src/checkstyle/checkstyle.xml</configLocation>
-                            <suppressionsLocation>src/checkstyle/checkstyle-suppressions.xml</suppressionsLocation>
-                            <headerLocation>src/checkstyle/checkstyle-header.txt</headerLocation>
-                            <encoding>UTF-8</encoding>
-                            <consoleOutput>true</consoleOutput>
-                            <failsOnError>true</failsOnError>
-                            <includeTestSourceDirectory>true</includeTestSourceDirectory>
-                        </configuration>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+       
             <plugin>
                 <artifactId>maven-source-plugin</artifactId>
                 <executions>
@@ -349,56 +328,13 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <show>protected</show>
-                    <failOnWarnings>true</failOnWarnings>
-                    <failOnError>true</failOnError>
-                    <additionalDependencies>
-                        <additionalDependency>
-                            <groupId>com.google.code.findbugs</groupId>
-                            <artifactId>jsr305</artifactId>
-                            <version>${jsr305.version}</version>
-                        </additionalDependency>
-                    </additionalDependencies>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>flatten-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>flatten-clean</id>
-                        <phase>clean</phase>
-                        <goals>
-                            <goal>clean</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>flatten</id>
-                        <phase>process-resources</phase>
-                        <goals>
-                            <goal>flatten</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-install-plugin</artifactId>
@@ -487,7 +423,7 @@
         <module>embedded-cassandra-junit4-test</module>
         <module>embedded-cassandra-testng-test</module>
         <module>embedded-cassandra-spring-test</module>
-        <module>embedded-cassandra-docs</module>
+<!--         <module>embedded-cassandra-docs</module> -->
     </modules>
 
 </project>
